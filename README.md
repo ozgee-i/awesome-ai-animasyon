@@ -28,8 +28,11 @@
 - 🌉 [Bölüm #01: Boğaz, 8 Türk sanatıyla](#bolum-01) *(Yakında)*
 - 🕹️ [Bölüm #02: 8 retro oyun stili](#bolum-02) *(Yakında)*
 - 🎈 [Bölüm #03: El yapımı gibi duran 8 animasyon](#bolum-03) *(Yakında)*
-- 🖌️ [Bölüm #04: 8 ressam stili](#bolum-04) *(Yakında)*
+- 🖌️ [Bölüm #04: Ressam ve baskı stilleri](#bolum-04) *(Yakında)*
 - 🚀 [Bölüm #05: Geleceğin İstanbul'u](#bolum-05) *(Yakında)*
+- ✏️ [Bölüm #06: Sade çizim stilleri](#bolum-06) *(Yakında)*
+- 🧊 [Bölüm #07: 3D stiller](#bolum-07) *(Yakında)*
+- 🌍 [Bölüm #08: Dünya halk sanatları](#bolum-08) *(Yakında)*
 
 ---
 
@@ -53,13 +56,31 @@
 
 <a id="bolum-04"></a>
 
-## 🖌️ Bölüm #04: 8 ressam stili
+## 🖌️ Bölüm #04: Ressam ve baskı stilleri
 
 *Yakında eklenecek.*
 
 <a id="bolum-05"></a>
 
 ## 🚀 Bölüm #05: Geleceğin İstanbul'u
+
+*Yakında eklenecek.*
+
+<a id="bolum-06"></a>
+
+## ✏️ Bölüm #06: Sade çizim stilleri
+
+*Yakında eklenecek.*
+
+<a id="bolum-07"></a>
+
+## 🧊 Bölüm #07: 3D stiller
+
+*Yakında eklenecek.*
+
+<a id="bolum-08"></a>
+
+## 🌍 Bölüm #08: Dünya halk sanatları
 
 *Yakında eklenecek.*
 
