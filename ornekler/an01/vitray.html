@@ -1,0 +1,65 @@
+<!doctype html>
+<!-- AN01 · AI Animasyon Komutu #01 · Stil: Vitray: kalın siyah kurşun çizgilerle ayrılmış renkli cam parçaları, arkadan vuran ışık -->
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Boğaz · Vitray</title>
+<style>html,body{margin:0;height:100%;background:#000;overflow:hidden}canvas{position:absolute;inset:0;margin:auto;display:block}</style>
+</head><body><canvas id="c" width="1080" height="1920"></canvas><script>
+const c=document.getElementById('c'),x=c.getContext('2d');
+const W=1080,H=1920,T=6,TAU=Math.PI*2,HZ=1080;
+function fit(){const s=Math.min(innerWidth/W,innerHeight/H);c.style.width=W*s+'px';c.style.height=H*s+'px';}
+addEventListener('resize',fit);fit();
+const R=i=>{const s=Math.sin(i*127.1+311.7)*43758.5453;return s-Math.floor(s);};
+const P=b=>{const p=new Path2D();b(p);return p;};
+function city(ox,by,s){return [
+ P(p=>p.ellipse(ox+170*s,by,230*s,80*s,0,Math.PI,0)),
+ P(p=>{p.rect(ox+110*s,by-120*s,120*s,70*s);p.moveTo(ox+230*s,by-120*s);p.arc(ox+170*s,by-120*s,60*s,0,Math.PI,true);p.closePath();}),
+ P(p=>{p.rect(ox+60*s,by-230*s,16*s,190*s);p.moveTo(ox+60*s,by-230*s);p.lineTo(ox+68*s,by-280*s);p.lineTo(ox+76*s,by-230*s);p.closePath();}),
+ P(p=>{p.rect(ox+266*s,by-215*s,16*s,175*s);p.moveTo(ox+266*s,by-215*s);p.lineTo(ox+274*s,by-262*s);p.lineTo(ox+282*s,by-215*s);p.closePath();}),
+ P(p=>{p.rect(ox+300*s,by-70*s,70*s,40*s);p.moveTo(ox+370*s,by-70*s);p.arc(ox+335*s,by-70*s,35*s,0,Math.PI,true);p.closePath();})
+];}
+function bridge(cx,dy,s){const L=210*s,th=180*s,E=L*2.2,top=dy-th,yc=dy+th-30*s;
+ const cy=u=>(1-u)*(1-u)*top+2*u*(1-u)*yc+u*u*top;
+ return {
+  towers:P(p=>{p.rect(cx-L-8*s,top,16*s,th+36*s);p.rect(cx+L-8*s,top,16*s,th+36*s);}),
+  deck:P(p=>p.rect(cx-E,dy,E*2,12*s)),
+  cable:P(p=>{p.moveTo(cx-E,dy);p.quadraticCurveTo(cx-L*1.6,dy-th*0.35,cx-L,top);p.quadraticCurveTo(cx,yc,cx+L,top);p.quadraticCurveTo(cx+L*1.6,dy-th*0.35,cx+E,dy);}),
+  hangers:P(p=>{for(let i=1;i<12;i++){const u=i/12,hx=cx-L+2*L*u;p.moveTo(hx,cy(u));p.lineTo(hx,dy);}})
+ };}
+function ferry(cx,cy,s){return {
+ hull:P(p=>{p.moveTo(cx-180*s,cy);p.lineTo(cx+200*s,cy);p.lineTo(cx+160*s,cy+64*s);p.lineTo(cx-150*s,cy+64*s);p.closePath();}),
+ cabin:P(p=>{p.rect(cx-120*s,cy-74*s,240*s,74*s);p.rect(cx-80*s,cy-116*s,160*s,42*s);}),
+ win:P(p=>{for(let i=0;i<7;i++)p.rect(cx-104*s+i*32*s,cy-56*s,18*s,20*s);}),
+ chim:P(p=>p.rect(cx+6*s,cy-190*s,32*s,74*s)),
+ top:{x:cx+22*s,y:cy-190*s}
+};}
+function gull(gx,gy,s,f){return P(p=>{p.moveTo(gx-44*s,gy+6*s);p.quadraticCurveTo(gx-22*s,gy-34*s*f,gx,gy);p.quadraticCurveTo(gx+22*s,gy-34*s*f,gx+44*s,gy+6*s);});}
+function state(t){const p=t/T;return {p,
+ far:p*340,mid:p*1080,near:p*1620,
+ bob:Math.sin(TAU*p*2)*10,
+ gulls:[0,1,2,3].map(i=>({x:((R(i)*1280+p*1280*(1+(i%2)))%1280)-100,y:430+R(i+9)*420+Math.sin(TAU*(p*2+R(i+3)))*24,f:Math.sin(TAU*(p*6+R(i+5))),s:.8+R(i+7)*.6})),
+ puffs:[0,1,2,3,4].map(i=>({q:(p*2+i/5)%1}))
+};}
+
+const lead=(path,col)=>{x.fillStyle=col;x.fill(path);x.strokeStyle='#121212';x.lineWidth=9;x.lineJoin='round';x.stroke(path);};
+const GX=9,GY=12,pts=[];for(let j=0;j<=GY;j++)for(let i=0;i<=GX;i++){const jx=(i>0&&i<GX)?(R(i*31+j*7)-.5)*70:0,jy=(j>0&&j<GY)?(R(i*13+j*29)-.5)*50:0;pts.push([i*W/GX+jx,j*HZ/GY+jy]);}
+const pt=(i,j)=>pts[j*(GX+1)+i];
+function skyCol(j,i,lum){const tc=[[24,40,90],[40,60,130],[90,60,140],[190,80,90],[235,130,60],[245,190,90]];const u=j/GY*(tc.length-1),a=Math.floor(u),b=Math.min(a+1,tc.length-1),f=u-a;const cc=tc[a].map((v,k)=>v+(tc[b][k]-v)*f);const v=(R(i*5+j*11)-.5)*30;return `rgb(${Math.min(255,(cc[0]+v)*lum)|0},${Math.min(255,(cc[1]+v)*lum)|0},${Math.min(255,(cc[2]+v)*lum)|0})`;}
+function draw(t){const S=state(t),ph=TAU*S.p;
+ x.fillStyle='#121212';x.fillRect(0,0,W,H);
+ for(let j=0;j<GY;j++)for(let i=0;i<GX;i++){const a=pt(i,j),b=pt(i+1,j),c2=pt(i+1,j+1),d=pt(i,j+1);const lum=0.85+0.25*Math.sin(ph+(i*0.7+j*0.4));lead(P(p=>{p.moveTo(a[0],a[1]);p.lineTo(b[0],b[1]);p.lineTo(c2[0],c2[1]);p.lineTo(d[0],d[1]);p.closePath();}),skyCol(j,i,lum));}
+ for(let k=0;k<12;k++){const a0=k*TAU/12+ph/12,a1=a0+TAU/12;lead(P(p=>{p.moveTo(780,520);p.arc(780,520,130,a0,a1);p.closePath();}),k%2?'#F6C445':'#F08A24');}
+ lead(P(p=>p.arc(780,520,44,0,TAU)),'#FFF1B8');
+ for(let k=-1;k<5;k++)city(k*340-S.far,HZ+6,.5).forEach((sh,i)=>lead(sh,['#3B1F5C','#5B2A86','#2B1A4A','#2B1A4A','#7A3E9D'][i]));
+ for(let k=0;k<2;k++){const b=bridge(760-S.mid+k*1080,HZ-40,.7);lead(b.towers,'#B3262E');lead(b.deck,'#B3262E');x.strokeStyle='#121212';x.lineWidth=9;x.stroke(b.cable);x.strokeStyle='#E04848';x.lineWidth=4;x.stroke(b.cable);x.strokeStyle='#121212';x.lineWidth=3;x.stroke(b.hangers);}
+ const tw=135,th=120;for(let r=0;r*th<H-HZ;r++){const o=(S.p*1080*(1+(r%2)))%tw,y=HZ+r*th;for(let px=-tw-o+(r%2)*tw/2;px<W+tw;px+=tw){const lum=0.8+0.3*Math.sin(ph*2+px*0.01+r),base=r%2?[20,90,140]:[30,120,150];lead(P(p=>{p.moveTo(px,y+15);p.lineTo(px+tw/2,y);p.lineTo(px+tw,y+15);p.lineTo(px+tw,y+th);p.lineTo(px,y+th);p.closePath();}),`rgb(${base[0]*lum|0},${base[1]*lum|0},${Math.min(255,base[2]*lum)|0})`);}}
+ for(let j=0;j<6;j++){const w=40+25*Math.sin(TAU*(S.p*2+j*.2));lead(P(p=>p.rect(780-w,HZ+30+j*55,w*2,26)),'#F6C445');}
+ const f=ferry(540,1440+S.bob,1.5);lead(f.hull,'#F3EAD3');lead(f.cabin,'#E9DDBD');lead(f.win,'#2C7DA0');lead(f.chim,'#B3262E');
+ S.puffs.forEach(({q})=>{x.globalAlpha=1-q;lead(P(p=>p.arc(f.top.x+q*160,f.top.y-q*360,18+q*46,0,TAU)),'#D9D2C3');});x.globalAlpha=1;
+ S.gulls.forEach(g=>{const s=g.s;lead(P(p=>{p.moveTo(g.x-44*s,g.y+6*s);p.quadraticCurveTo(g.x-22*s,g.y-34*s*g.f,g.x,g.y);p.quadraticCurveTo(g.x+22*s,g.y-34*s*g.f,g.x+44*s,g.y+6*s);p.quadraticCurveTo(g.x,g.y+18*s,g.x-44*s,g.y+6*s);}),'#FFFFFF');});
+ const lg=x.createRadialGradient(780,520,50,780,520,1200);lg.addColorStop(0,'rgba(255,240,200,.25)');lg.addColorStop(1,'rgba(255,240,200,0)');x.fillStyle=lg;x.fillRect(0,0,W,H);
+ x.strokeStyle='#121212';x.lineWidth=40;x.strokeRect(0,0,W,H);
+}
+
+function loop(ms){draw((ms/1000)%T);requestAnimationFrame(loop);}
+requestAnimationFrame(loop);
+</script></body></html>
