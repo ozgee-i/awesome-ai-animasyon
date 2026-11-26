@@ -26,7 +26,7 @@
 ## 📑 İçindekiler
 
 - 🌉 [Bölüm #01: Boğaz, 8 Türk sanatıyla](#bolum-01)
-- 🕹️ [Bölüm #02: 8 retro oyun stili](#bolum-02) *(Yakında)*
+- 🕹️ [Bölüm #02: 8 retro oyun stili](#bolum-02)
 - 🎈 [Bölüm #03: El yapımı gibi duran 8 animasyon](#bolum-03) *(Yakında)*
 - 🖌️ [Bölüm #04: Ressam ve baskı stilleri](#bolum-04) *(Yakında)*
 - 🚀 [Bölüm #05: Geleceğin İstanbul'u](#bolum-05) *(Yakında)*
@@ -71,7 +71,32 @@ Hareket: Akıcı olsun; ön, orta ve arka plan farklı hızlarda kaysın; her an
 
 ## 🕹️ Bölüm #02: 8 retro oyun stili
 
-*Yakında eklenecek.*
+**Komut:**
+
+```text
+Tek bir HTML dosyası oluştur: 9:16 çerçevede (1080x1920 tuval, pencereye sığacak şekilde ölçeklensin, dışı siyah kalsın) 6 saniyelik, kesintisiz dönen bir animasyon. Her şeyi kodla çiz; görsel, dış dosya ya da kütüphane kullanma.
+
+Sahne: Gün batımında Ege'de bir sahil yolu. Eski, yuvarlak hatlı küçük bir otomobil kıyı boyunca ilerliyor; tekerlekleri dönüyor, egzozundan küçük duman bulutları çıkıyor. Yol kenarında palmiyeler ve elektrik direkleri geçiyor, denizde yelkenliler süzülüyor, gökyüzünde martılar uçuyor; açıkta bir deniz feneri var.
+
+Stil: [STİL]. Bu stile tamamen bağlı kal: renkler, şekiller, çizgiler, doku, ışık ve hareketin karakteri hep bu stilin kendisi gibi hissettirsin.
+
+Hareket: Akıcı olsun; ön, orta ve arka plan farklı hızlarda kaysın; her an bir şey hareket etsin; animasyon 6 saniyede bir fark edilmeden başa dönsün. Ekranda yazı olmasın. Yanıt olarak yalnızca HTML dosyasını ver.
+```
+
+**[STİL] yerine yazılacaklar:**
+
+| # | Stil | Tarif | Örnek |
+|---|---|---|---|
+| 01 | 8-bit piksel | 8-bit piksel sanat: iri kare pikseller, 16 renkli sınırlı palet, 80'ler atari oyunu | [8-bit.html](ornekler/an02/8-bit.html) |
+| 02 | Yeşil el konsolu | Yeşil el konsolu ekranı: yalnızca 4 yeşil ton, iri pikseller, ekran ızgarası ve gri plastik çerçeve | [yesil-el-konsolu.html](ornekler/an02/yesil-el-konsolu.html) |
+| 03 | 16-bit piksel | 16-bit piksel sanat: daha ince pikseller, noktalı renk geçişleri (dithering), 90'lar konsol oyunu | [16-bit.html](ornekler/an02/16-bit.html) |
+| 04 | 90'lar low poly | 90'lar low poly 3D: az sayıda düz renkli üçgen yüzey, keskin kenarlar, yüzeye göre açık-koyu gölgelendirme | [lowpoly.html](ornekler/an02/lowpoly.html) |
+| 05 | Vektör atari | 80'ler vektör atari ekranı: siyah zemin, yalnızca ince ve parlak çizgilerle çizilmiş tel kafes şekiller, hafif ışık hüzmesi parlaması | [vektor-atari.html](ornekler/an02/vektor-atari.html) |
+| 06 | VHS bozulması | VHS kaset görüntüsü: kayan parazit bandı, renk kanallarının kayması, tarama çizgileri, soluk renkler | [vhs.html](ornekler/an02/vhs.html) |
+| 07 | 2000'ler konsol | 2000'ler konsol grafiği: düşük çözünürlüklü bulanık dokular, ufukta sis, güneşte parlama, metal yüzeylerde kayan parlaklık | [2000ler-konsol.html](ornekler/an02/2000ler-konsol.html) |
+| 08 | Synthwave | Synthwave: mor-pembe gökyüzü, çizgili neon güneş, ufka uzanan neon ızgara zemin, parlayan çizgiler | [synthwave.html](ornekler/an02/synthwave.html) |
+
+> 💡 Örnek dosyaları indirip tarayıcıda açabilirsin.
 
 <a id="bolum-03"></a>
 
